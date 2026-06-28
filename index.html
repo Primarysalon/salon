@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Primary Salon and Spa – El Nido, Palawan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F7F3EE; --sand: #E8DDD0; --stone: #C4B5A0;
+      --bark: #6B5744; --espresso: #2E1F14; --blush: #D4A89A;
+      --sage: #8FA88B; --gold: #B8944A;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--espresso); font-size: 16px; line-height: 1.7; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 2.5rem; background: rgba(247,243,238,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--sand); }
+    .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--espresso); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bark); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--espresso); }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem 4rem; background: linear-gradient(160deg, #F7F3EE 0%, #EDE3D8 60%, #E4D5C4 100%); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(212,168,154,0.18) 0%, transparent 70%); pointer-events: none; }
+    .hero::after { content: ''; position: absolute; bottom: -80px; left: -80px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(143,168,139,0.15) 0%, transparent 70%); pointer-events: none; }
+    .hero-inner { position: relative; z-index: 1; max-width: 720px; }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+    .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 300; line-height: 1.08; color: var(--espresso); margin-bottom: 0.3rem; }
+    .hero h1 em { font-style: italic; color: var(--bark); }
+    .hero-tagline { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 300; font-style: italic; color: var(--stone); margin: 1.5rem 0 2.5rem; }
+    .hero-cta { display: inline-block; padding: 0.9rem 2.4rem; background: var(--espresso); color: var(--cream); font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; transition: background 0.25s; }
+    .hero-cta:hover { background: var(--bark); }
+
+    /* SHARED */
+    section { padding: 5rem 2rem; }
+    .section-label { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 300; color: var(--espresso); line-height: 1.15; margin-bottom: 1rem; }
+    .section-body { font-size: 0.95rem; color: var(--bark); max-width: 480px; line-height: 1.8; }
+    .divider { width: 60px; height: 1px; background: var(--gold); margin: 1.5rem 0; }
+
+    /* ABOUT */
+    .about { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; align-items: center; }
+    .about-visual { aspect-ratio: 4/5; background: var(--sand); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .about-visual::after { content: ''; position: absolute; bottom: -2px; right: -2px; width: 70%; height: 70%; border: 2px solid var(--stone); pointer-events: none; }
+    .about-monogram { font-family: 'Cormorant Garamond', serif; font-size: 7rem; font-weight: 300; color: var(--stone); font-style: italic; line-height: 1; }
+
+    /* SERVICES */
+    #services { background: var(--espresso); }
+    .services-wrap { max-width: 1100px; margin: 0 auto; }
+    .services-header { margin-bottom: 3rem; }
+    .services-header .section-label { color: var(--blush); }
+    .services-header .section-title { color: var(--cream); }
+
+    /* Category tabs */
+    .cat-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+    .cat-tab { padding: 0.45rem 1.2rem; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2); color: var(--stone); background: transparent; cursor: pointer; transition: all 0.2s; }
+    .cat-tab:hover { border-color: var(--gold); color: var(--gold); }
+    .cat-tab.active { background: var(--gold); border-color: var(--gold); color: var(--espresso); }
+
+    /* Category block */
+    .cat-block { margin-bottom: 3.5rem; }
+    .cat-block:last-child { margin-bottom: 0; }
+    .cat-heading { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .cat-icon { font-size: 1.4rem; }
+    .cat-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--cream); }
+    .cat-line { flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+
+    /* Service rows */
+    .service-row { display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; padding: 1.1rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .service-row:last-child { border-bottom: none; }
+    .svc-name { font-size: 0.95rem; font-weight: 500; color: var(--cream); margin-bottom: 0.25rem; }
+    .svc-desc { font-size: 0.82rem; color: var(--stone); line-height: 1.6; max-width: 560px; }
+    .svc-price { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; color: var(--gold); white-space: nowrap; text-align: right; }
+    .svc-price-note { font-size: 0.68rem; color: var(--stone); text-align: right; margin-top: 0.1rem; }
+
+    /* EXPERIENCE */
+    #experience { background: var(--sand); text-align: center; }
+    .experience-inner { max-width: 700px; margin: 0 auto; }
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+    .pillar-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; color: var(--stone); line-height: 1; margin-bottom: 0.5rem; }
+    .pillar-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bark); }
+
+    /* CONTACT */
+    #contact { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-detail { display: flex; gap: 1rem; margin-bottom: 1.8rem; align-items: flex-start; }
+    .contact-detail-icon { width: 36px; height: 36px; border: 1px solid var(--sand); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; }
+    .contact-detail-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.2rem; }
+    .contact-detail-value { font-size: 0.92rem; color: var(--espresso); }
+    .contact-form-note { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; font-style: italic; color: var(--bark); line-height: 1.4; margin-bottom: 2rem; }
+    .hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.3rem 2rem; }
+    .hours-row { font-size: 0.85rem; color: var(--bark); padding: 0.4rem 0; border-bottom: 1px solid var(--sand); display: flex; justify-content: space-between; }
+    .hours-row span { color: var(--stone); }
+
+    /* FOOTER */
+    footer { background: var(--espresso); color: var(--stone); text-align: center; padding: 2.5rem 2rem; font-size: 0.8rem; letter-spacing: 0.06em; }
+    footer strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: var(--cream); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 720px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      .about, #contact { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-visual { aspect-ratio: 3/2; }
+      .pillars { grid-template-columns: 1fr; gap: 1.5rem; }
+      .service-row { grid-template-columns: 1fr; }
+      .svc-price { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">Primary Salon &amp; Spa</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#experience">Our Promise</a></li>
+    <li><a href="#contact">Visit Us</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">El Nido, Palawan &nbsp;·&nbsp; Est. 2024</p>
+    <h1>Primary<br><em>Salon &amp; Spa</em></h1>
+    <p class="hero-tagline">Where beauty meets tranquility in paradise.</p>
+    <a href="#services" class="hero-cta">Explore our services</a>
+  </div>
+</div>
+
+<section id="about">
+  <div class="about">
+    <div class="about-visual">
+      <span class="about-monogram">PS</span>
+    </div>
+    <div class="about-text">
+      <p class="section-label">Our story</p>
+      <h2 class="section-title">Beauty rooted in care</h2>
+      <div class="divider"></div>
+      <p class="section-body" style="margin-bottom:1rem;">Nestled in the heart of El Nido, Palawan, Primary Salon and Spa is your sanctuary for beauty and relaxation. We bring together skilled professionals and premium products to offer a full suite of services — from precision haircuts to rejuvenating body massages.</p>
+      <p class="section-body">Whether you're a local or a traveller discovering paradise, we invite you to slow down, refresh, and leave feeling your absolute best.</p>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="services-wrap">
+    <div class="services-header">
+      <p class="section-label">What we offer</p>
+      <h2 class="section-title">Our services &amp; prices</h2>
+    </div>
+
+    <!-- TAB FILTERS -->
+    <div class="cat-tabs">
+      <button class="cat-tab active" onclick="filterCat('all', this)">All Services</button>
+      <button class="cat-tab" onclick="filterCat('hair', this)">Hair</button>
+      <button class="cat-tab" onclick="filterCat('wellness', this)">Wellness</button>
+      <button class="cat-tab" onclick="filterCat('nails', this)">Nails</button>
+      <button class="cat-tab" onclick="filterCat('brows', this)">Brows &amp; Lashes</button>
+    </div>
+
+    <!-- HAIR -->
+    <div class="cat-block" data-cat="hair">
+      <div class="cat-heading">
+        <span class="cat-icon">✂️</span>
+        <span class="cat-name">Hair Services</span>
+        <span class="cat-line"></span>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Haircut – Ladies</p>
+          <p class="svc-desc">Precision cut tailored to your face shape and lifestyle. Includes wash, blow-dry, and style finish.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 250</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Haircut – Men</p>
+          <p class="svc-desc">Classic or modern cut with clipper and scissor work. Includes wash and style.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 150</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Haircut – Kids (under 12)</p>
+          <p class="svc-desc">Gentle, fun haircut experience for little ones. Includes wash and quick blow-dry.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 120</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Hair Color – Full</p>
+          <p class="svc-desc">Single-process full color application from root to tip. Ideal for gray coverage or a complete color refresh.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 800</p>
+          <p class="svc-price-note">Starts at</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Highlights / Balayage</p>
+          <p class="svc-desc">Hand-painted or foil highlights for a sun-kissed, natural-looking dimension. Price varies by hair length.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 1,200</p>
+          <p class="svc-price-note">Starts at</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Toning / Gloss</p>
+          <p class="svc-desc">Color-correcting gloss to neutralize brassiness and add brilliant shine. Great after bleaching or highlights.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 400</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Keratin Treatment</p>
+          <p class="svc-desc">Smoothing treatment that eliminates frizz and restores silky softness. Results last 3–5 months.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 1,500</p>
+          <p class="svc-price-note">Starts at</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Deep Conditioning Treatment</p>
+          <p class="svc-desc">Intensive moisture and repair mask for dry, damaged, or chemically treated hair. Includes steam therapy.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 350</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Hot Oil Treatment</p>
+          <p class="svc-desc">Nourishing hot oil infusion to strengthen hair strands and add natural shine from root to tip.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 200</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Hair Rebonding</p>
+          <p class="svc-desc">Permanent straightening treatment for permanently smooth, pin-straight hair. Best for naturally curly or wavy hair.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 2,000</p>
+          <p class="svc-price-note">Starts at</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Blow-dry &amp; Style</p>
+          <p class="svc-desc">Wash, blow-dry, and finish styling only. Perfect for events or a quick refresh.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 180</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- WELLNESS -->
+    <div class="cat-block" data-cat="wellness">
+      <div class="cat-heading">
+        <span class="cat-icon">🌿</span>
+        <span class="cat-name">Body &amp; Wellness</span>
+        <span class="cat-line"></span>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Swedish Massage – 60 min</p>
+          <p class="svc-desc">A full-body relaxation massage using long, flowing strokes to ease tension and improve circulation.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 500</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Swedish Massage – 90 min</p>
+          <p class="svc-desc">Extended session for deeper relaxation. Covers full body including neck, shoulders, back, and legs.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 700</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Deep Tissue Massage – 60 min</p>
+          <p class="svc-desc">Firm pressure targeting deep muscle layers to release chronic tension, knots, and muscle soreness.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 600</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Hot Stone Massage – 75 min</p>
+          <p class="svc-desc">Smooth heated basalt stones melt away tension while warm oil is worked into tired muscles. Deeply therapeutic.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 850</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Foot Reflexology – 45 min</p>
+          <p class="svc-desc">Targeted pressure-point therapy on the feet to relieve fatigue, improve energy flow, and soothe tired soles.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 350</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Head, Neck &amp; Shoulder Massage – 30 min</p>
+          <p class="svc-desc">Quick but effective relief for stress-induced tension in the upper body. Great add-on with any hair service.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 250</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAILS -->
+    <div class="cat-block" data-cat="nails">
+      <div class="cat-heading">
+        <span class="cat-icon">💅</span>
+        <span class="cat-name">Nail Services</span>
+        <span class="cat-line"></span>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Classic Manicure</p>
+          <p class="svc-desc">Nail shaping, cuticle care, hand soak, massage, and regular polish of your choice.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 150</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Classic Pedicure</p>
+          <p class="svc-desc">Foot soak, nail shaping, callus removal, cuticle care, foot massage, and regular polish.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 200</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Mani-Pedi Combo</p>
+          <p class="svc-desc">Complete hands and feet treatment. Classic manicure and pedicure in one session — best value.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 320</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Gel Manicure</p>
+          <p class="svc-desc">Long-lasting gel polish cured under UV light. Chip-free finish that lasts up to 3 weeks.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 300</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Gel Pedicure</p>
+          <p class="svc-desc">Classic pedicure service finished with durable gel polish for a flawless look that lasts.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 350</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Nail Art – Simple Design</p>
+          <p class="svc-desc">Freehand nail art, stamping, or decal designs for 1–5 nails. Florals, French tips, geometric, and more.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 50</p>
+          <p class="svc-price-note">Per nail</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Nail Art – Full Set</p>
+          <p class="svc-desc">Custom nail art design on all 10 nails. Includes gel base for added durability. Discuss your design idea with us!</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 500</p>
+          <p class="svc-price-note">Starts at</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Gel Removal</p>
+          <p class="svc-desc">Safe, professional removal of gel or acrylic nails without damaging the natural nail underneath.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 100</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BROWS & LASHES -->
+    <div class="cat-block" data-cat="brows">
+      <div class="cat-heading">
+        <span class="cat-icon">✨</span>
+        <span class="cat-name">Brows &amp; Lashes</span>
+        <span class="cat-line"></span>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Eyebrow Threading</p>
+          <p class="svc-desc">Precise hair removal using cotton thread for clean, defined brows. Gentle on all skin types.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 80</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Eyebrow Tinting</p>
+          <p class="svc-desc">Semi-permanent dye to add depth, definition, and fullness to sparse or light-colored brows.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 150</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Eyebrow Tattoo – Microblading</p>
+          <p class="svc-desc">Hairlike strokes tattooed into the skin for a naturally fuller brow. Semi-permanent, lasts 1–2 years. Includes a touch-up session.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 3,500</p>
+          <p class="svc-price-note">Includes touch-up</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Eyebrow Tattoo – Powder Brows</p>
+          <p class="svc-desc">Soft, shaded look similar to filled-in brows using a makeup pencil. Ideal for oily or mature skin types.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 3,000</p>
+          <p class="svc-price-note">Includes touch-up</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Eyebrow Tattoo – Combo Brows</p>
+          <p class="svc-desc">A blend of microblading at the front and powder shading at the tail for a defined, dimensional result.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 4,000</p>
+          <p class="svc-price-note">Includes touch-up</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Lash Extensions – Classic Set</p>
+          <p class="svc-desc">One extension per natural lash for a clean, mascara-like enhancement. Natural and elegant for daily wear.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 800</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Lash Extensions – Volume Set</p>
+          <p class="svc-desc">2–6 lightweight extensions per lash for full, fluffy, dramatic volume. Great for special occasions.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 1,200</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Lash Extensions – Hybrid Set</p>
+          <p class="svc-desc">A mix of classic and volume techniques for a textured, wispy look that works for everyday and events.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 1,000</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Lash Infill / Touch-up</p>
+          <p class="svc-desc">Fill in grown-out or shed lashes to maintain a full set. Recommended every 2–3 weeks.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 400</p>
+          <p class="svc-price-note">Starts at</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Lash Lift &amp; Tint</p>
+          <p class="svc-desc">Curl and darken your natural lashes for a wide-eyed effect without extensions. Lasts 6–8 weeks.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 600</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <p class="svc-name">Lash Removal</p>
+          <p class="svc-desc">Safe professional removal of lash extensions without pulling or damaging your natural lashes.</p>
+        </div>
+        <div>
+          <p class="svc-price">₱ 150</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /services-wrap -->
+</section>
+
+<section id="experience" style="background: var(--sand); text-align: center;">
+  <div class="experience-inner">
+    <p class="section-label">Our promise</p>
+    <h2 class="section-title">An experience, not just a service</h2>
+    <p class="section-body" style="margin: 0 auto 1rem;">Every visit to Primary Salon and Spa is designed to be a retreat — a moment carved out just for you in one of the world's most beautiful places.</p>
+    <div class="pillars">
+      <div>
+        <p class="pillar-num">30+</p>
+        <p class="pillar-label">Services offered</p>
+      </div>
+      <div>
+        <p class="pillar-num">100%</p>
+        <p class="pillar-label">Client satisfaction</p>
+      </div>
+      <div>
+        <p class="pillar-num">1</p>
+        <p class="pillar-label">Destination paradise</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div id="contact">
+    <div>
+      <p class="section-label">Find us</p>
+      <h2 class="section-title">Visit us in El Nido</h2>
+      <div class="divider"></div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📍</div>
+        <div>
+          <p class="contact-detail-label">Address</p>
+          <p class="contact-detail-value">Rizal Street, Barangay Maligaya<br>El Nido, Palawan 5313</p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">🕐</div>
+        <div>
+          <p class="contact-detail-label">Hours</p>
+          <p class="contact-detail-value">Open daily · 9:00 AM – 7:00 PM</p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">💬</div>
+        <div>
+          <p class="contact-detail-label">Appointments</p>
+          <p class="contact-detail-value">Walk-ins welcome · Message us on Facebook for bookings</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="contact-form-note">"Step in, unwind, and let us take care of the rest."</p>
+      <div class="hours-grid">
+        <div class="hours-row">Monday <span>9 AM – 7 PM</span></div>
+        <div class="hours-row">Tuesday <span>9 AM – 7 PM</span></div>
+        <div class="hours-row">Wednesday <span>9 AM – 7 PM</span></div>
+        <div class="hours-row">Thursday <span>9 AM – 7 PM</span></div>
+        <div class="hours-row">Friday <span>9 AM – 7 PM</span></div>
+        <div class="hours-row">Saturday <span>9 AM – 7 PM</span></div>
+        <div class="hours-row">Sunday <span>9 AM – 7 PM</span></div>
+        <div class="hours-row">Holidays <span>9 AM – 5 PM</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>Primary Salon &amp; Spa</strong>
+  Rizal Street, Barangay Maligaya, El Nido, Palawan &nbsp;·&nbsp; &copy; 2024 Primary Salon and Spa. All rights reserved.
+</footer>
+
+<script>
+  function filterCat(cat, btn) {
+    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.cat-block').forEach(block => {
+      if (cat === 'all' || block.dataset.cat === cat) {
+        block.style.display = 'block';
+      } else {
+        block.style.display = 'none';
+      }
+    });
+  }
+</script>
+</body>
+</html>
