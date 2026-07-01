@@ -76,12 +76,21 @@
     .svc-price-note { font-size: 0.68rem; color: var(--stone); text-align: right; margin-top: 0.1rem; }
 
     /* Sub-headings & add-on rows within a category */
-    .hair-subheading { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 500; font-style: italic; color: var(--gold); letter-spacing: 0.03em; margin: 2rem 0 0.4rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.08); }
-    .cat-block > .hair-subheading:first-of-type { margin-top: 0.5rem; padding-top: 0; border-top: none; }
+    .hair-subheading { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 500; font-style: italic; color: var(--gold); letter-spacing: 0.03em; margin: 0; text-align: left; }
     .hair-subheading small { display: block; font-family: 'Inter', sans-serif; font-style: normal; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--stone); margin-top: 0.2rem; }
     .service-row.addon { padding: 0.7rem 0 0.7rem 1.3rem; }
     .service-row.addon .svc-name { font-size: 0.85rem; font-weight: 400; color: var(--stone); }
     .service-row.addon .svc-price { font-size: 1rem; }
+
+    /* Accordion (collapsible sub-categories) */
+    .accordion-item { border-top: 1px solid rgba(255,255,255,0.08); }
+    .accordion-item:first-child { border-top: none; }
+    .accordion-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; background: none; border: none; cursor: pointer; padding: 1.4rem 0 1rem; text-align: left; }
+    .accordion-toggle:hover .hair-subheading { color: #D4B368; }
+    .accordion-icon { font-size: 1.3rem; line-height: 1; color: var(--gold); font-weight: 300; flex-shrink: 0; margin-left: 1rem; transition: transform 0.3s ease; }
+    .accordion-item.open .accordion-icon { transform: rotate(45deg); }
+    .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .accordion-item.open .accordion-content { padding-bottom: 0.5rem; }
 
     /* EXPERIENCE */
     #experience { background: var(--sand); text-align: center; }
@@ -169,7 +178,6 @@
       <button class="cat-tab" onclick="filterCat('brows', this)">Brows &amp; Lashes</button>
     </div>
 
-    <!-- HAIR -->
     <div class="cat-block" data-cat="hair">
       <div class="cat-heading">
         <span class="cat-icon">✂️</span>
@@ -177,172 +185,202 @@
         <span class="cat-line"></span>
       </div>
 
-      <p class="hair-subheading">Haircut &amp; Blow Dry</p>
+      <div class="accordion-item open">
+        <button class="accordion-toggle" onclick="toggleAccordion(this)">
+          <p class="hair-subheading">Haircut &amp; Blow Dry</p>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content" style="max-height:none;">
+          <div class="service-row">
+            <div><p class="svc-name">Haircut &amp; Blow Dry (Women)</p></div>
+            <div><p class="svc-price">₱ 500</p></div>
+          </div>
+          <div class="service-row addon">
+            <div><p class="svc-name">+ Add-on: Hair Wash</p></div>
+            <div><p class="svc-price">₱ 200</p></div>
+          </div>
 
-      <div class="service-row">
-        <div><p class="svc-name">Haircut &amp; Blow Dry (Women)</p></div>
-        <div><p class="svc-price">₱ 500</p></div>
-      </div>
-      <div class="service-row addon">
-        <div><p class="svc-name">+ Add-on: Hair Wash</p></div>
-        <div><p class="svc-price">₱ 200</p></div>
-      </div>
+          <div class="service-row">
+            <div><p class="svc-name">Haircut (Men)</p></div>
+            <div><p class="svc-price">₱ 500</p></div>
+          </div>
+          <div class="service-row addon">
+            <div><p class="svc-name">+ Add-on: Men's Shave</p></div>
+            <div><p class="svc-price">₱ 300</p></div>
+          </div>
 
-      <div class="service-row">
-        <div><p class="svc-name">Haircut (Men)</p></div>
-        <div><p class="svc-price">₱ 500</p></div>
-      </div>
-      <div class="service-row addon">
-        <div><p class="svc-name">+ Add-on: Men's Shave</p></div>
-        <div><p class="svc-price">₱ 300</p></div>
-      </div>
+          <div class="service-row">
+            <div><p class="svc-name">Shampoo &amp; Blow Dry</p></div>
+            <div><p class="svc-price">₱ 500</p></div>
+          </div>
+          <div class="service-row addon">
+            <div><p class="svc-name">+ Add-on: Curling / Iron</p></div>
+            <div><p class="svc-price">₱ 300</p></div>
+          </div>
 
-      <div class="service-row">
-        <div><p class="svc-name">Shampoo &amp; Blow Dry</p></div>
-        <div><p class="svc-price">₱ 500</p></div>
-      </div>
-      <div class="service-row addon">
-        <div><p class="svc-name">+ Add-on: Curling / Iron</p></div>
-        <div><p class="svc-price">₱ 300</p></div>
-      </div>
+          <div class="service-row">
+            <div><p class="svc-name">Shampoo &amp; Blow Dry w/ Hair Extension</p></div>
+            <div><p class="svc-price">₱ 800</p></div>
+          </div>
 
-      <div class="service-row">
-        <div><p class="svc-name">Shampoo &amp; Blow Dry w/ Hair Extension</p></div>
-        <div><p class="svc-price">₱ 800</p></div>
-      </div>
+          <div class="service-row">
+            <div><p class="svc-name">Hair Iron (Only)</p></div>
+            <div><p class="svc-price">₱ 500</p></div>
+          </div>
 
-      <div class="service-row">
-        <div><p class="svc-name">Hair Iron (Only)</p></div>
-        <div><p class="svc-price">₱ 500</p></div>
-      </div>
-
-      <div class="service-row">
-        <div><p class="svc-name">Hair Wash (Only)</p></div>
-        <div><p class="svc-price">₱ 350</p></div>
-      </div>
-
-      <p class="hair-subheading">Hair Treatment</p>
-
-      <div class="service-row">
-        <div><p class="svc-name">Hair Protein</p></div>
-        <div>
-          <p class="svc-price">₱ 3,500</p>
-          <p class="svc-price-note">Starts at</p>
+          <div class="service-row">
+            <div><p class="svc-name">Hair Wash (Only)</p></div>
+            <div><p class="svc-price">₱ 350</p></div>
+          </div>
         </div>
       </div>
 
-      <div class="service-row">
-        <div><p class="svc-name">Keratin Treatment</p></div>
-        <div><p class="svc-price">₱ 3,500</p></div>
-      </div>
+      <div class="accordion-item">
+        <button class="accordion-toggle" onclick="toggleAccordion(this)">
+          <p class="hair-subheading">Hair Treatment</p>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <div class="service-row">
+            <div><p class="svc-name">Hair Protein</p></div>
+            <div>
+              <p class="svc-price">₱ 3,500</p>
+              <p class="svc-price-note">Starts at</p>
+            </div>
+          </div>
 
-      <div class="service-row">
-        <div><p class="svc-name">Hair Mask (Bra Length)</p></div>
-        <div><p class="svc-price">₱ 2,000</p></div>
-      </div>
+          <div class="service-row">
+            <div><p class="svc-name">Keratin Treatment</p></div>
+            <div><p class="svc-price">₱ 3,500</p></div>
+          </div>
 
-      <div class="service-row">
-        <div><p class="svc-name">Hair Spa (Bra Length)</p></div>
-        <div><p class="svc-price">₱ 2,000</p></div>
-      </div>
+          <div class="service-row">
+            <div><p class="svc-name">Hair Mask (Bra Length)</p></div>
+            <div><p class="svc-price">₱ 2,000</p></div>
+          </div>
 
-      <p class="hair-subheading">Texture &amp; Styling</p>
-
-      <div class="service-row">
-        <div><p class="svc-name">Digital Wave</p></div>
-        <div><p class="svc-price">₱ 4,500</p></div>
-      </div>
-
-      <div class="service-row">
-        <div>
-          <p class="svc-name">Permanent Straightening</p>
-          <p class="svc-desc">L'Oréal</p>
-        </div>
-        <div>
-          <p class="svc-price">₱ 3,499</p>
-          <p class="svc-price-note">Starts at</p>
+          <div class="service-row">
+            <div><p class="svc-name">Hair Spa (Bra Length)</p></div>
+            <div><p class="svc-price">₱ 2,000</p></div>
+          </div>
         </div>
       </div>
 
-      <div class="service-row">
-        <div>
-          <p class="svc-name">Rebond</p>
-          <p class="svc-desc">Advisable for healthy hair</p>
-        </div>
-        <div><p class="svc-price">₱ 2,000</p></div>
-      </div>
+      <div class="accordion-item">
+        <button class="accordion-toggle" onclick="toggleAccordion(this)">
+          <p class="hair-subheading">Texture &amp; Styling</p>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <div class="service-row">
+            <div><p class="svc-name">Digital Wave</p></div>
+            <div><p class="svc-price">₱ 4,500</p></div>
+          </div>
 
-      <div class="service-row">
-        <div>
-          <p class="svc-name">Permanent Blow Dry</p>
-          <p class="svc-desc">Advisable for healthy hair</p>
-        </div>
-        <div><p class="svc-price">Price upon consultation</p></div>
-      </div>
+          <div class="service-row">
+            <div>
+              <p class="svc-name">Permanent Straightening</p>
+              <p class="svc-desc">L'Oréal</p>
+            </div>
+            <div>
+              <p class="svc-price">₱ 3,499</p>
+              <p class="svc-price-note">Starts at</p>
+            </div>
+          </div>
 
-      <p class="hair-subheading">Hair Color — L'Oréal Ammonia-Free
-        <small>Recommended for sensitive skin</small>
-      </p>
+          <div class="service-row">
+            <div>
+              <p class="svc-name">Rebond</p>
+              <p class="svc-desc">Advisable for healthy hair</p>
+            </div>
+            <div><p class="svc-price">₱ 2,000</p></div>
+          </div>
 
-      <div class="service-row">
-        <div><p class="svc-name">Re-roots (1–2 inch)</p></div>
-        <div><p class="svc-price">₱ 2,500</p></div>
-      </div>
-
-      <div class="service-row">
-        <div><p class="svc-name">Full Head (Bra Length)</p></div>
-        <div><p class="svc-price">₱ 4,000</p></div>
-      </div>
-
-      <p class="hair-subheading">Hair Color — Low Ammonia</p>
-
-      <div class="service-row">
-        <div><p class="svc-name">Re-roots</p></div>
-        <div><p class="svc-price">₱ 1,600</p></div>
-      </div>
-
-      <div class="service-row">
-        <div><p class="svc-name">Color Full Head, One Tone (Bra Length)</p></div>
-        <div><p class="svc-price">₱ 2,500</p></div>
-      </div>
-
-      <div class="service-row">
-        <div><p class="svc-name">Color Refresh / Toning</p></div>
-        <div><p class="svc-price">₱ 2,500</p></div>
-      </div>
-
-      <div class="service-row">
-        <div><p class="svc-name">Color Correction</p></div>
-        <div>
-          <p class="svc-price">₱ 3,500</p>
-          <p class="svc-price-note">Starts at</p>
+          <div class="service-row">
+            <div>
+              <p class="svc-name">Permanent Blow Dry</p>
+              <p class="svc-desc">Advisable for healthy hair</p>
+            </div>
+            <div><p class="svc-price">Price upon consultation</p></div>
+          </div>
         </div>
       </div>
 
-      <div class="service-row">
-        <div><p class="svc-name">No-Bleach Foilayage</p></div>
-        <div>
-          <p class="svc-price">₱ 3,500</p>
-          <p class="svc-price-note">Starts at</p>
+      <div class="accordion-item">
+        <button class="accordion-toggle" onclick="toggleAccordion(this)">
+          <p class="hair-subheading">Hair Color — L'Oréal Ammonia-Free
+            <small>Recommended for sensitive skin</small>
+          </p>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <div class="service-row">
+            <div><p class="svc-name">Re-roots (1–2 inch)</p></div>
+            <div><p class="svc-price">₱ 2,500</p></div>
+          </div>
+
+          <div class="service-row">
+            <div><p class="svc-name">Full Head (Bra Length)</p></div>
+            <div><p class="svc-price">₱ 4,000</p></div>
+          </div>
         </div>
       </div>
 
-      <div class="service-row">
-        <div><p class="svc-name">Highlights + Base Color</p></div>
-        <div><p class="svc-price">₱ 4,500</p></div>
-      </div>
+      <div class="accordion-item">
+        <button class="accordion-toggle" onclick="toggleAccordion(this)">
+          <p class="hair-subheading">Hair Color — Low Ammonia</p>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <div class="service-row">
+            <div><p class="svc-name">Re-roots</p></div>
+            <div><p class="svc-price">₱ 1,600</p></div>
+          </div>
 
-      <div class="service-row">
-        <div>
-          <p class="svc-name">Bleached Balayage / Foilayage / Ombré</p>
-          <p class="svc-desc">Regrowth bleach</p>
+          <div class="service-row">
+            <div><p class="svc-name">Color Full Head, One Tone (Bra Length)</p></div>
+            <div><p class="svc-price">₱ 2,500</p></div>
+          </div>
+
+          <div class="service-row">
+            <div><p class="svc-name">Color Refresh / Toning</p></div>
+            <div><p class="svc-price">₱ 2,500</p></div>
+          </div>
+
+          <div class="service-row">
+            <div><p class="svc-name">Color Correction</p></div>
+            <div>
+              <p class="svc-price">₱ 3,500</p>
+              <p class="svc-price-note">Starts at</p>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div><p class="svc-name">No-Bleach Foilayage</p></div>
+            <div>
+              <p class="svc-price">₱ 3,500</p>
+              <p class="svc-price-note">Starts at</p>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div><p class="svc-name">Highlights + Base Color</p></div>
+            <div><p class="svc-price">₱ 4,500</p></div>
+          </div>
+
+          <div class="service-row">
+            <div>
+              <p class="svc-name">Bleached Balayage / Foilayage / Ombré</p>
+              <p class="svc-desc">Regrowth bleach</p>
+            </div>
+            <div><p class="svc-price">₱ 2,500</p></div>
+          </div>
+
+          <div class="service-row">
+            <div><p class="svc-name">Bring Your Own Basic</p></div>
+            <div><p class="svc-price">₱ 1,500</p></div>
+          </div>
         </div>
-        <div><p class="svc-price">₱ 2,500</p></div>
-      </div>
-
-      <div class="service-row">
-        <div><p class="svc-name">Bring Your Own Basic</p></div>
-        <div><p class="svc-price">₱ 1,500</p></div>
       </div>
     </div>
 
@@ -704,6 +742,23 @@
 </footer>
 
 <script>
+  function toggleAccordion(toggleBtn) {
+    const item = toggleBtn.closest('.accordion-item');
+    const content = item.querySelector('.accordion-content');
+    const isOpen = item.classList.contains('open');
+
+    if (isOpen) {
+      // Closing: lock in current pixel height first, then animate to 0.
+      content.style.maxHeight = content.scrollHeight + 'px';
+      content.offsetHeight; // force reflow
+      content.style.maxHeight = '0px';
+      item.classList.remove('open');
+    } else {
+      item.classList.add('open');
+      content.style.maxHeight = content.scrollHeight + 'px';
+    }
+  }
+
   function filterCat(cat, btn) {
     document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
     btn.classList.add('active');
