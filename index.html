@@ -75,6 +75,14 @@
     .svc-price { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; color: var(--gold); white-space: nowrap; text-align: right; }
     .svc-price-note { font-size: 0.68rem; color: var(--stone); text-align: right; margin-top: 0.1rem; }
 
+    /* Sub-headings & add-on rows within a category */
+    .hair-subheading { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 500; font-style: italic; color: var(--gold); letter-spacing: 0.03em; margin: 2rem 0 0.4rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.08); }
+    .cat-block > .hair-subheading:first-of-type { margin-top: 0.5rem; padding-top: 0; border-top: none; }
+    .hair-subheading small { display: block; font-family: 'Inter', sans-serif; font-style: normal; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--stone); margin-top: 0.2rem; }
+    .service-row.addon { padding: 0.7rem 0 0.7rem 1.3rem; }
+    .service-row.addon .svc-name { font-size: 0.85rem; font-weight: 400; color: var(--stone); }
+    .service-row.addon .svc-price { font-size: 1rem; }
+
     /* EXPERIENCE */
     #experience { background: var(--sand); text-align: center; }
     .experience-inner { max-width: 700px; margin: 0 auto; }
@@ -169,118 +177,172 @@
         <span class="cat-line"></span>
       </div>
 
+      <p class="hair-subheading">Haircut &amp; Blow Dry</p>
+
       <div class="service-row">
+        <div><p class="svc-name">Haircut &amp; Blow Dry (Women)</p></div>
+        <div><p class="svc-price">₱ 500</p></div>
+      </div>
+      <div class="service-row addon">
+        <div><p class="svc-name">+ Add-on: Hair Wash</p></div>
+        <div><p class="svc-price">₱ 200</p></div>
+      </div>
+
+      <div class="service-row">
+        <div><p class="svc-name">Haircut (Men)</p></div>
+        <div><p class="svc-price">₱ 500</p></div>
+      </div>
+      <div class="service-row addon">
+        <div><p class="svc-name">+ Add-on: Men's Shave</p></div>
+        <div><p class="svc-price">₱ 300</p></div>
+      </div>
+
+      <div class="service-row">
+        <div><p class="svc-name">Shampoo &amp; Blow Dry</p></div>
+        <div><p class="svc-price">₱ 500</p></div>
+      </div>
+      <div class="service-row addon">
+        <div><p class="svc-name">+ Add-on: Curling / Iron</p></div>
+        <div><p class="svc-price">₱ 300</p></div>
+      </div>
+
+      <div class="service-row">
+        <div><p class="svc-name">Shampoo &amp; Blow Dry w/ Hair Extension</p></div>
+        <div><p class="svc-price">₱ 800</p></div>
+      </div>
+
+      <div class="service-row">
+        <div><p class="svc-name">Hair Iron (Only)</p></div>
+        <div><p class="svc-price">₱ 500</p></div>
+      </div>
+
+      <div class="service-row">
+        <div><p class="svc-name">Hair Wash (Only)</p></div>
+        <div><p class="svc-price">₱ 350</p></div>
+      </div>
+
+      <p class="hair-subheading">Hair Treatment</p>
+
+      <div class="service-row">
+        <div><p class="svc-name">Hair Protein</p></div>
         <div>
-          <p class="svc-name">Haircut – Ladies</p>
-          <p class="svc-desc">Precision cut tailored to your face shape and lifestyle. Includes wash, blow-dry, and style finish.</p>
-        </div>
-        <div>
-          <p class="svc-price">₱ 250</p>
+          <p class="svc-price">₱ 3,500</p>
+          <p class="svc-price-note">Starts at</p>
         </div>
       </div>
 
       <div class="service-row">
-        <div>
-          <p class="svc-name">Haircut – Men</p>
-          <p class="svc-desc">Classic or modern cut with clipper and scissor work. Includes wash and style.</p>
-        </div>
-        <div>
-          <p class="svc-price">₱ 150</p>
-        </div>
+        <div><p class="svc-name">Keratin Treatment</p></div>
+        <div><p class="svc-price">₱ 3,500</p></div>
+      </div>
+
+      <div class="service-row">
+        <div><p class="svc-name">Hair Mask (Bra Length)</p></div>
+        <div><p class="svc-price">₱ 2,000</p></div>
+      </div>
+
+      <div class="service-row">
+        <div><p class="svc-name">Hair Spa (Bra Length)</p></div>
+        <div><p class="svc-price">₱ 2,000</p></div>
+      </div>
+
+      <p class="hair-subheading">Texture &amp; Styling</p>
+
+      <div class="service-row">
+        <div><p class="svc-name">Digital Wave</p></div>
+        <div><p class="svc-price">₱ 4,500</p></div>
       </div>
 
       <div class="service-row">
         <div>
-          <p class="svc-name">Haircut – Kids (under 12)</p>
-          <p class="svc-desc">Gentle, fun haircut experience for little ones. Includes wash and quick blow-dry.</p>
+          <p class="svc-name">Permanent Straightening</p>
+          <p class="svc-desc">L'Oréal</p>
         </div>
         <div>
-          <p class="svc-price">₱ 120</p>
-        </div>
-      </div>
-
-      <div class="service-row">
-        <div>
-          <p class="svc-name">Hair Color – Full</p>
-          <p class="svc-desc">Single-process full color application from root to tip. Ideal for gray coverage or a complete color refresh.</p>
-        </div>
-        <div>
-          <p class="svc-price">₱ 800</p>
+          <p class="svc-price">₱ 3,499</p>
           <p class="svc-price-note">Starts at</p>
         </div>
       </div>
 
       <div class="service-row">
         <div>
-          <p class="svc-name">Highlights / Balayage</p>
-          <p class="svc-desc">Hand-painted or foil highlights for a sun-kissed, natural-looking dimension. Price varies by hair length.</p>
+          <p class="svc-name">Rebond</p>
+          <p class="svc-desc">Advisable for healthy hair</p>
         </div>
+        <div><p class="svc-price">₱ 2,000</p></div>
+      </div>
+
+      <div class="service-row">
         <div>
-          <p class="svc-price">₱ 1,200</p>
+          <p class="svc-name">Permanent Blow Dry</p>
+          <p class="svc-desc">Advisable for healthy hair</p>
+        </div>
+        <div><p class="svc-price">Price upon consultation</p></div>
+      </div>
+
+      <p class="hair-subheading">Hair Color — L'Oréal Ammonia-Free
+        <small>Recommended for sensitive skin</small>
+      </p>
+
+      <div class="service-row">
+        <div><p class="svc-name">Re-roots (1–2 inch)</p></div>
+        <div><p class="svc-price">₱ 2,500</p></div>
+      </div>
+
+      <div class="service-row">
+        <div><p class="svc-name">Full Head (Bra Length)</p></div>
+        <div><p class="svc-price">₱ 4,000</p></div>
+      </div>
+
+      <p class="hair-subheading">Hair Color — Low Ammonia</p>
+
+      <div class="service-row">
+        <div><p class="svc-name">Re-roots</p></div>
+        <div><p class="svc-price">₱ 1,600</p></div>
+      </div>
+
+      <div class="service-row">
+        <div><p class="svc-name">Color Full Head, One Tone (Bra Length)</p></div>
+        <div><p class="svc-price">₱ 2,500</p></div>
+      </div>
+
+      <div class="service-row">
+        <div><p class="svc-name">Color Refresh / Toning</p></div>
+        <div><p class="svc-price">₱ 2,500</p></div>
+      </div>
+
+      <div class="service-row">
+        <div><p class="svc-name">Color Correction</p></div>
+        <div>
+          <p class="svc-price">₱ 3,500</p>
           <p class="svc-price-note">Starts at</p>
         </div>
       </div>
 
       <div class="service-row">
+        <div><p class="svc-name">No-Bleach Foilayage</p></div>
         <div>
-          <p class="svc-name">Toning / Gloss</p>
-          <p class="svc-desc">Color-correcting gloss to neutralize brassiness and add brilliant shine. Great after bleaching or highlights.</p>
-        </div>
-        <div>
-          <p class="svc-price">₱ 400</p>
-        </div>
-      </div>
-
-      <div class="service-row">
-        <div>
-          <p class="svc-name">Keratin Treatment</p>
-          <p class="svc-desc">Smoothing treatment that eliminates frizz and restores silky softness. Results last 3–5 months.</p>
-        </div>
-        <div>
-          <p class="svc-price">₱ 1,500</p>
+          <p class="svc-price">₱ 3,500</p>
           <p class="svc-price-note">Starts at</p>
         </div>
       </div>
 
       <div class="service-row">
-        <div>
-          <p class="svc-name">Deep Conditioning Treatment</p>
-          <p class="svc-desc">Intensive moisture and repair mask for dry, damaged, or chemically treated hair. Includes steam therapy.</p>
-        </div>
-        <div>
-          <p class="svc-price">₱ 350</p>
-        </div>
+        <div><p class="svc-name">Highlights + Base Color</p></div>
+        <div><p class="svc-price">₱ 4,500</p></div>
       </div>
 
       <div class="service-row">
         <div>
-          <p class="svc-name">Hot Oil Treatment</p>
-          <p class="svc-desc">Nourishing hot oil infusion to strengthen hair strands and add natural shine from root to tip.</p>
+          <p class="svc-name">Bleached Balayage / Foilayage / Ombré</p>
+          <p class="svc-desc">Regrowth bleach</p>
         </div>
-        <div>
-          <p class="svc-price">₱ 200</p>
-        </div>
+        <div><p class="svc-price">₱ 2,500</p></div>
       </div>
 
       <div class="service-row">
-        <div>
-          <p class="svc-name">Hair Rebonding</p>
-          <p class="svc-desc">Permanent straightening treatment for permanently smooth, pin-straight hair. Best for naturally curly or wavy hair.</p>
-        </div>
-        <div>
-          <p class="svc-price">₱ 2,000</p>
-          <p class="svc-price-note">Starts at</p>
-        </div>
-      </div>
-
-      <div class="service-row">
-        <div>
-          <p class="svc-name">Blow-dry &amp; Style</p>
-          <p class="svc-desc">Wash, blow-dry, and finish styling only. Perfect for events or a quick refresh.</p>
-        </div>
-        <div>
-          <p class="svc-price">₱ 180</p>
-        </div>
+        <div><p class="svc-name">Bring Your Own Basic</p></div>
+        <div><p class="svc-price">₱ 1,500</p></div>
       </div>
     </div>
 
